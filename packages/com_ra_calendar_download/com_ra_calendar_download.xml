@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" client="administrator" version="2.5" method="upgrade">
+	<name>com_ra_calendar_download</name>
+	<author>Keith Grimes</author>
+	<description>COM_RA_CALENDAR_DOWNLOAD_DESC</description>
+	<creationDate>August 2018</creationDate>
+	<copyright>Copyright (C) 2018 by Keith Grimes</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<homepage></homepage>
+	<authorEmail>webmaster@wiltsswindonramblers.org.uk</authorEmail>
+	<authorUrl></authorUrl>
+	<version>0.0.1</version>
+	<install> <!-- Runs on install -->
+<!--
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+-->
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+<!--
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+-->
+	</uninstall>
+	<update> <!-- Runs on update; New in 1.6 -->
+<!--
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+-->
+	</update>
+	<administration>
+		<menu>com_ra_calendar_download</menu>
+		<files folder="admin">
+			<filename>ra_calendar_download.php</filename>
+			<filename>index.html</filename>
+			<filename>controller.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>tables</folder>
+		</files>
+		<languages folder="admlang">
+			<language tag="en-GB">en-GB/en-GB.com_ra_calendar_download.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_ra_calendar_download.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
