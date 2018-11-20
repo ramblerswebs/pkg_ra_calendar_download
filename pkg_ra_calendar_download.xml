@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5" method="upgrade">
+	<name>Ramblers Calendar</name>
+	<author>Keith Grimes</author>
+	<creationDate>August 2018</creationDate>
+	<copyright>Copyright (C) 2018 by Keith Grimes</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<packagename>ra_calendar_download</packagename>
+	<version>0.0.1</version>
+	<url></url>
+	<packager>Keith Grimes</packager>
+	<packagerurl></packagerurl>
+	<description>Ramblers Calendar Package successfully installed!&lt;br /&gt;&lt;br /&gt;&lt;div&gt;This package contains all extensions constituting the Ramblers Calendar Download functionality. It provides means to download Ramblers walks to your local calendar.&lt;/div&gt;&lt;br /&gt;&lt;div&gt;&lt;em&gt;If you have any questions or problems, please visit the &lt;a href='https:ne.wiltsswindonramblers.org.uk'&gt;project site&lt;/a&gt;.&lt;br /&gt;In case you want to uninstall Ramblers Calendar download, please use the Package to uninstall all extensions at once!&lt;br /&gt;Ramblers Calendar Download is published under the &lt;a target='_blank' title='GNU General Public License' href='http://www.gnu.org/copyleft/gpl.html'&gt;GNU General Public License&lt;/a&gt;.&lt;/div&gt;</description>
+	<files folder="packages">
+		<file type="component" id="com_ra_calendar_download">com_ra_calendar_download.zip</file>
+		<file type="module" id="mod_ra_calendar_download" client="site">mod_ra_calendar_download.zip</file>
+	</files>
+	<updateservers>
+	</updateservers>
+</extension>
