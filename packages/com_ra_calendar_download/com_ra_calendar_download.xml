@@ -43,7 +43,7 @@
 			<folder>views</folder>
 			<folder>tables</folder>
 		</files>
-		<languages folder="admlang">
+		<languages folder="languages">
 			<language tag="en-GB">en-GB/en-GB.com_ra_calendar_download.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_ra_calendar_download.sys.ini</language>
 		</languages>

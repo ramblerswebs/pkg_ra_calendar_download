@@ -28,11 +28,11 @@ jQuery(function ($) {
         $('#download_details').toggle();
         if ($('#download_details').is(':hidden'))
         {    
-            $('#more_options').text("More Options...");
+            $('#more_options').text("Expand Options...");
         }
         else
         {
-            $('#more_options').text("Fewer Options");
+            $('#more_options').text("Collapse Options");
         }
     });
    
