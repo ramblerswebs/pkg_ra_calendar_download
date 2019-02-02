@@ -18,8 +18,9 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 		return $model;
 	}
         
-        function download()
+    function download()
 	{
+        if (JDEBUG) { JLog::add("[controller][grouplist] call to download - refresh the list", JLog::DEBUG, "com_ra_calendar_download"); }
 
 		// Get the input
 		$input = JFactory::getApplication()->input;
@@ -40,6 +41,7 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 
         function delete()
 	{
+        if (JDEBUG) { JLog::add("[controller][grouplist] call to delete the selected item(s)", JLog::DEBUG, "com_ra_calendar_download"); }
 
 		// Get the input
 		$input = JFactory::getApplication()->input;

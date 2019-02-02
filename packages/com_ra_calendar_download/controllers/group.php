@@ -13,12 +13,14 @@ class ra_calendar_downloadControllerGroup extends JControllerForm
 {
 	public function save($key = null, $urlVar = null)
 	{
+        if (JDEBUG) { JLog::add("[controller][group] call to save the selected item", JLog::DEBUG, "com_ra_calendar_download"); }
 		$return = parent::save($key, $urlVar);
 		$this->setRedirect('index.php?option=com_ra_calendar_download&view=grouplist');
 		return $return;
 	}
 	public function cancel($key = null)
 	{
+        if (JDEBUG) { JLog::add("[controller][group] call to cancel the current edit", JLog::DEBUG, "com_ra_calendar_download"); }
 		$return = parent::cancel($key);
 		$this->setRedirect('index.php?option=com_ra_calendar_download&view=grouplist');
 		return $return;

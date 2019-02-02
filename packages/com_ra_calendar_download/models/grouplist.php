@@ -24,6 +24,7 @@ class ra_calendar_downloadModelgrouplist extends JModelList
 
 	protected function getListQuery()
 	{
+        if (JDEBUG) { JLog::add("[models][grouplist] call to getListQuery", JLog::DEBUG, "com_ra_calendar_download"); }
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('b.id, b.code, b.description');
@@ -48,7 +49,7 @@ class ra_calendar_downloadModelgrouplist extends JModelList
 
         public function download($pks)
 	{
-
+        if (JDEBUG) { JLog::add("[models][grouplist] call to download", JLog::DEBUG, "com_ra_calendar_download"); }
 		// TODO: Implement functionality to refresh the group list
 
 		return true;
@@ -56,6 +57,7 @@ class ra_calendar_downloadModelgrouplist extends JModelList
 
         public function delete($pks)
 	{
+        if (JDEBUG) { JLog::add("[models][grouplist] call to delete", JLog::DEBUG, "com_ra_calendar_download"); }
 
 		// TODO: Implement functionality to delete the selected items
 

@@ -24,6 +24,7 @@ class ra_calendar_downloadController extends JControllerLegacy
         
         function delete()
         {
+			if (JDEBUG) { JLog::add("[controller] delete called - remove entries from the database", JLog::DEBUG, "com_ra_calendar_download"); }
             $input = JFactory::getApplication()->input;
             // Obtain the list of group codes to delete
             $pks = $input->post->get('cid', array(), 'array');
