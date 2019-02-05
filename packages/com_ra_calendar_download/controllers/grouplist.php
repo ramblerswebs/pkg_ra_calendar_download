@@ -39,9 +39,30 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 
 	}        
 
-        function delete()
+    function delete()
 	{
         if (JDEBUG) { JLog::add("[controller][grouplist] call to delete the selected item(s)", JLog::DEBUG, "com_ra_calendar_download"); }
+
+		// Get the input
+		$input = JFactory::getApplication()->input;
+		$pks = $input->post->get('cid', array(), 'array');
+
+		// Sanitize the input
+		JArrayHelper::toInteger($pks);
+
+		// Get the model
+		$model = $this->getModel();
+
+		$return = $model->delete($pks);
+
+		// Redirect to the list screen.
+		$this->setRedirect(JRoute::_('index.php?option=com_ra_calendar_download&view=grouplist', false));
+
+	}   
+	          
+    function remove()
+	{
+        if (JDEBUG) { JLog::add("[controller][grouplist] call to remove the selected item(s)", JLog::DEBUG, "com_ra_calendar_download"); }
 
 		// Get the input
 		$input = JFactory::getApplication()->input;

@@ -9,6 +9,8 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
 
+require_once(JPATH_ROOT . '/modules/mod_ra_calendar_download/scripts/ra_calendar_download_feed.php');
+
 class ra_calendar_downloadModelgrouplist extends JModelList
 {
 
@@ -47,19 +49,40 @@ class ra_calendar_downloadModelgrouplist extends JModelList
 		parent::populateState('b.code', 'ASC');
 	}
 
-        public function download($pks)
+    public function download($pks)
 	{
         if (JDEBUG) { JLog::add("[models][grouplist] call to download", JLog::DEBUG, "com_ra_calendar_download"); }
-		// TODO: Implement functionality to refresh the group list
+		$feed_class = new ra_calendar_download_feed();
+		// $feed_class->truncate_table();
+		$feed_class->update_records();
+        unset($feed_class);
 
 		return true;
 	}
 
-        public function delete($pks)
+    public function delete($pks)
 	{
         if (JDEBUG) { JLog::add("[models][grouplist] call to delete", JLog::DEBUG, "com_ra_calendar_download"); }
 
-		// TODO: Implement functionality to delete the selected items
+		$db = JFactory::getDbo();
+
+		foreach ($pks as $id)
+		{
+			if (JDEBUG) { JLOG::add("[models][grouplist] delete id " . $id . " from database", JLog::DEBUG, "com_ra_calendar_download"); }
+
+			// delete each key in turn
+			$conditions = array($db->quoteName('id') . ' = ' . $id);
+			$query = $db->getQuery(true);
+			$query->delete($db->quoteName('#__ra_groups'));
+			$query->where($conditions);
+			$db->setQuery($query);
+
+			$result = $db->execute();
+
+			unset($conditions);
+			unset($query);
+		}
+		unset($db);
 
 		return true;
 	}

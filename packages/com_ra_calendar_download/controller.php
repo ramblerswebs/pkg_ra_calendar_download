@@ -21,7 +21,7 @@ class ra_calendar_downloadController extends JControllerLegacy
 		$input->set('view', $view);
 		parent::display($cachable);
 	}
-        
+/*        
         function delete()
         {
 			if (JDEBUG) { JLog::add("[controller] delete called - remove entries from the database", JLog::DEBUG, "com_ra_calendar_download"); }
@@ -36,4 +36,5 @@ class ra_calendar_downloadController extends JControllerLegacy
             // Now redirect back to the main Group List page.
             $this->setRedirect('index.php?option=com_ra_calendar_download&view=grouplist');
         }
+*/
 }

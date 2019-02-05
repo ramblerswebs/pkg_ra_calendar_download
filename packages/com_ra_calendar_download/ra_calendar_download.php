@@ -23,7 +23,7 @@ JLog::addLogger(
            // The log category/categories which should be recorded in this file
            // In this case, it's just the one category from our extension, still
            // we need to put it inside an array
-       array('com_ra_calendar_download', 'mod_ra_calendar_download')
+       array('com_ra_calendar_download', 'mod_ra_calendar_download', 'pkg_ra_calendar_download')
    );
 
 $controller = JControllerLegacy::getInstance('ra_calendar_download');
