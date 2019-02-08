@@ -2,7 +2,7 @@
 // No direct access to this file
 defined('_JEXEC') or die;
 
-require_once(JPATH_ROOT . '/modules/mod_ra_calendar_download/scripts/ra_calendar_download_feed.php');
+require_once('ra_calendar_download_feed.php');
 /**
  * Script file of HelloWorld module
  */
@@ -21,7 +21,7 @@ class mod_ra_calendar_downloadInstallerScript
 			$feed = new ra_calendar_download_feed();
 			//$feed->truncate_table();
 			$feed->update_records();
-			$unset($feed);
+			unset($feed);
 			JFactory::getApplication()->enqueueMessage('Ramblers Group Codes have been updated.');
 	}
 

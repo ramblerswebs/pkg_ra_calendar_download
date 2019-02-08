@@ -9,7 +9,7 @@
 	<homepage></homepage>
 	<authorEmail>webmaster@wiltsswindonramblers.org.uk</authorEmail>
 	<authorUrl></authorUrl>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<install> <!-- Runs on install -->
 <!--
 		<sql>
@@ -31,6 +31,9 @@
 		</schemas>
 -->
 	</update>
+    <updateservers>
+        <server type="extension" name="RA Calendar Download Component" priority="1">https://raw.githubusercontent.com/ramblerswebs/updates/master/updates/ra-calendar-component.xml</server>
+    </updateservers>
 	<administration>
 		<menu>com_ra_calendar_download</menu>
 		<files folder="admin">

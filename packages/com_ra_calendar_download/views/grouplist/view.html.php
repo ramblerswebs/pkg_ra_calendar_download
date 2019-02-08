@@ -33,8 +33,8 @@ class ra_calendar_downloadViewgrouplist extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_RA_CALENDAR_DOWNLOAD_HEADING_GROUPS'), 'ra_calendar_download');
 		JToolBarHelper::divider();
 		JToolBarHelper::custom('grouplist.download', 'download.png', 'download.png', 'COM_RA_CALENDAR_DOWNLOAD_REFRESH', false);
+		JToolBarHelper::deleteList('COM_RA_CALENDAR_DOWNLOAD_GROUPLIST_DELETE_CONFIRM','grouplist.delete');
 		JToolBarHelper::editList('group.edit');
-                JToolBarHelper::deleteList('Are you sure?','','Delete');
 		JToolBarHelper::addNew('group.add');
 	}
 }
