@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 			type="checkbox"
 			name="toggle"
 			value=""
-			onclick="checkAll(<?php echo count($this->items); ?>);"
+			onclick="Joomla.checkAll(this);"
 		/>
 	</th>
 	<th>
@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			'COM_RA_CALENDAR_DOWNLOAD_HEADING_DESCRIPTION',
+			'COM_RA_CALENDAR_DOWNLOAD_HEADING_NAME',
 			'b.description',
 			$this->sortDirection,
 			$this->sortColumn); ?>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" client="administrator" version="2.5" method="upgrade">
+<extension type="component" client="administrator" version="3.0" method="upgrade">
 	<name>com_ra_calendar_download</name>
 	<author>Keith Grimes</author>
 	<description>COM_RA_CALENDAR_DOWNLOAD_DESC</description>
@@ -31,13 +31,10 @@
 		</schemas>
 -->
 	</update>
-    <updateservers>
-        <server type="extension" name="RA Calendar Download Component" priority="1">https://raw.githubusercontent.com/ramblerswebs/updates/master/updates/ra-calendar-component.xml</server>
-    </updateservers>
 	<administration>
 		<menu>com_ra_calendar_download</menu>
 		<files folder="admin">
-			<filename>ra_calendar_download.php</filename>
+			<filename component="com_ra_calendar_download">ra_calendar_download.php</filename>
 			<filename>index.html</filename>
 			<filename>controller.php</filename>
 			<folder>controllers</folder>

@@ -6,7 +6,7 @@
 	<copyright>Copyright (C) 2018 by Keith Grimes</copyright>
 	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
 	<packagename>ra_calendar_download</packagename>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<url></url>
 	<packager>Keith Grimes</packager>
 	<packagerurl></packagerurl>
@@ -15,6 +15,7 @@
 		<file type="component" id="com_ra_calendar_download">com_ra_calendar_download.zip</file>
 		<file type="module" id="mod_ra_calendar_download" client="site">mod_ra_calendar_download.zip</file>
 	</files>
-	<updateservers>
-	</updateservers>
+    <updateservers>
+        <server type="extension" name="RA Calendar Download" priority="1">https://raw.githubusercontent.com/ramblerswebs/updates/master/updates/pkg-ra-calendar-download.xml</server>
+    </updateservers>
 </extension>

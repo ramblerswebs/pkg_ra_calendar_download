@@ -19,7 +19,7 @@ class ra_calendar_downloadModelgrouplist extends JModelList
 		$config['filter_fields'] = array(
                         'b.id',
 			'b.code',
-			'b.description'
+			'b.name'
 		);
 		parent::__construct($config);
 	}
@@ -29,7 +29,7 @@ class ra_calendar_downloadModelgrouplist extends JModelList
         if (JDEBUG) { JLog::add("[models][grouplist] call to getListQuery", JLog::DEBUG, "com_ra_calendar_download"); }
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('b.id, b.code, b.description');
+		$query->select('b.id, b.code, b.name');
 		$query->from('#__ra_groups b');
 		$ordering  = $this->getState('list.ordering', 'b.code');
 		$ordering  = (strcmp($ordering, '') == 0) ? 'b.code' : $ordering;

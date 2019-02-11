@@ -55,8 +55,8 @@ class ra_calendar_download_feed
 						// Create a new query object.
 						$query = $db->getQuery(true);
 						// Insert columns.
-						$columns = array('code', 'description');
-						$values = array($db->quote($group->groupCode), $db->quote($group->groupCode . ':' . $group->groupName));
+						$columns = array('code', 'name');
+						$values = array($db->quote($group->groupCode), $db->quote($group->groupName));
 	
 						// Prepare the insert query.
 						$query

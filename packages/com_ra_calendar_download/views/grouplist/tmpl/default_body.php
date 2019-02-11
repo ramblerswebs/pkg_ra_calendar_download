@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 foreach ($this->items as $i => $item): ?>
 <tr>
 	<td><?php echo JHtml::_('grid.id', $i, $item->id); ?></td>
-	<td><?php echo $item->code; ?></a></td>
-	<td><?php echo explode(":", $item->description)[1]; ?></td>
+	<td><?php echo $item->code; ?></td>
+	<td><?php echo $item->name; ?></td>
 </tr>
 <?php endforeach;

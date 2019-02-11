@@ -15,10 +15,10 @@
 			default=""
 		/>
 		<field
-			name="description"
+			name="name"
 			type="text"
-			label="COM_RA_CALENDAR_DOWNLOAD_HEADING_DESCRIPTION"
-			description="COM_RA_CALENDAR_DOWNLOAD_DESC_GROUP_DESCRIPTION"
+			label="COM_RA_CALENDAR_DOWNLOAD_HEADING_NAME"
+			description="COM_RA_CALENDAR_DOWNLOAD_DESC_GROUP_NAME"
 			size="40"
 			default=""
 		/>
