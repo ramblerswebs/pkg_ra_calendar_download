@@ -90,7 +90,7 @@ $rsstimeout = $params->get('rsstimeout');
     </form>
     <div id='<?php echo($ID)?>_trailingmessage' class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
     <div>
-        <a href="https://github.com/ramblerswebs/pkg_ra_calendar_download/wiki/Home" target="blank">Click Here for User Guide</a>
+        <a href="https://github.com/ramblerswebs/pkg_ra_calendar_download/wiki/User-Guide" target="blank">Click Here for User Guide</a>
     </div>
     <div id='<?php echo($ID) ?>_usermessage'></div>
     <div id='<?php echo($ID) ?>_tryagain' style='display:none'>
