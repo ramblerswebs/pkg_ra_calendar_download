@@ -25,6 +25,7 @@ pipeline {
         sh 'rm -r pkg_ra_calendar_download'
       }
     }
+/*
     stage('Deployment') {
       parallel {
         stage('Apache01') {
@@ -91,5 +92,6 @@ pipeline {
         } // End of Stage
       } // End of Parallel
     } // End of Stage
+*/
   } // End of Stages
 } // End of Pipeline
