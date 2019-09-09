@@ -1,16 +1,12 @@
 pipeline {
   agent any
   stages {
-/*
     stage('Extract Sources') {
       steps {
-        dir ('pkg_ra_calendar_download') {
-          // Use the master branch to get the sources. Ensure the media is attached into the pi.
-          git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
-        }
+	    // Use the master branch to get the sources. Ensure the media is attached into the pi.
+	    git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
       }
     }
-*/
     stage('Package Zip File') {
       steps {
         // First Zip the components as part of the package
