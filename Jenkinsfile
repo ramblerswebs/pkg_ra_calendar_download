@@ -10,6 +10,7 @@ pipeline {
     stage('Package Zip File') {
       steps {
         // First Zip the components as part of the package
+        sh 'rm -r .git'
         sh 'zip -r packages/com_ra_calendar_download.zip packages/com_ra_calendar_download'
         sh 'zip -r packages/mod_ra_calendar_download.zip packages/mod_ra_calendar_download'
 
