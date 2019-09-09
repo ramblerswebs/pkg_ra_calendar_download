@@ -57,7 +57,6 @@ pipeline {
 /*
         stage('Trial Site') {
           steps {
-
             script {
 	            timeout(time: 1, unit: 'MINUTES') {
 	              input(id: "DeployGate2", message: "Deploy to Trial Site?", ok: "Deploy")
@@ -89,8 +88,8 @@ pipeline {
             }
           } // End of Steps
         } // End of Stage
+*/
       } // End of Parallel
     } // End of Stage
-*/
   } // End of Stages
 } // End of Pipeline
