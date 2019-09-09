@@ -3,11 +3,10 @@ pipeline {
   stages {
     stage('Extract Sources') {
       steps {
-        sh 'mkdir pkg_ra_calendar_download'
-        sh 'cd pkg_ra_calendar_download'
-        // Use the master branch to get the sources. Ensure the media is attached into the pi.
-        git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
-        sh 'cd ..'
+        dir ('pkg_ra_calendar_download') {
+          // Use the master branch to get the sources. Ensure the media is attached into the pi.
+          git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
+        }
       }
     }
     stage('Package Zip File') {
