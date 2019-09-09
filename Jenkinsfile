@@ -20,12 +20,11 @@ pipeline {
 		sh 'rm -r pkg_ra_calendar_download/packages/mod_ra_calendar_download'
 
 		// Now zip the main package
-        sh 'zip -r pkg_ra_calendar_download.zip pkg_ra_calendar_download'
+        sh 'zip -r pkg_ra_calendar_download.zip pkg_ra_calendar_download/*'
         // Now remove the directory
         // sh 'rm -r pkg_ra_calendar_download'
       }
     }
-/*
     stage('Deployment') {
       parallel {
         stage('Apache01') {
@@ -55,7 +54,7 @@ pipeline {
             } // End of Script
           } // End of Steps
         } // End of Stage
-
+/*
         stage('Trial Site') {
           steps {
 
