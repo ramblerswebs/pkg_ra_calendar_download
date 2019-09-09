@@ -22,7 +22,7 @@ pipeline {
 		// Now zip the main package
         sh 'zip -r pkg_ra_calendar_download.zip pkg_ra_calendar_download'
         // Now remove the directory
-        sh 'rm -r pkg_ra_calendar_download'
+        // sh 'rm -r pkg_ra_calendar_download'
       }
     }
 /*
