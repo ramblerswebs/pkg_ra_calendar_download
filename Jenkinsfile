@@ -26,6 +26,7 @@ pipeline {
 		}
 
 		dir('pkg_ra_calendar_download') {
+          sh 'rm -r .git'
 		  // Now zip the main package
           sh 'zip -r ../pkg_ra_calendar_download.zip .'
         }
@@ -34,7 +35,6 @@ pipeline {
         // sh 'rm -r pkg_ra_calendar_download'
       }
     }
-/*
     stage('Deployment') {
       parallel {
         stage('Apache01') {
@@ -64,7 +64,7 @@ pipeline {
             } // End of Script
           } // End of Steps
         } // End of Stage
-
+/*
         stage('Trial Site') {
           steps {
             script {
@@ -98,8 +98,8 @@ pipeline {
             }
           } // End of Steps
         } // End of Stage
+*/
       } // End of Parallel
     } // End of Stage
-*/
   } // End of Stages
 } // End of Pipeline
