@@ -1,5 +1,16 @@
 pipeline {
   agent any
+  parameters {
+        choice(
+            choices: ['Yes' , 'No'],
+            description: 'Deploy Succcessful Build to Local Apache Site',
+            name: 'DEPLOY_APACHE_SITE')
+
+        choice(
+            choices: ['No' , 'Yes'],
+            description: 'Deploy Succcessful Build to Ramblers Trial Site',
+            name: 'DEPLOY_TRIAL_SITE')
+  }
   stages {
     stage('Extract Sources') {
       steps {
@@ -38,6 +49,9 @@ pipeline {
     stage('Deployment') {
       parallel {
         stage('Apache01') {
+          when { 
+          	expression { params.DEPLOY_APACHE_SITE == "Yes" }
+          }
           steps {
             script {
               // Update to use SSH Private-Public Key file
@@ -64,15 +78,12 @@ pipeline {
             } // End of Script
           } // End of Steps
         } // End of Stage
-/*
+
         stage('Trial Site') {
+          when { 
+          	expression { params.DEPLOY_TRIAL_SITE == "Yes" }
+          }
           steps {
-            script {
-	            timeout(time: 1, unit: 'MINUTES') {
-	              input(id: "DeployGate2", message: "Deploy to Trial Site?", ok: "Deploy")
-              }
-            }
-            
             script {
               echo "Installing on Trial Site"
               // Transfer the file using FTP
@@ -95,10 +106,9 @@ pipeline {
                 // run the command to install the update.
                 sshCommand(remote: remote, command: "php public_html/trial/cli/install-joomla-extension.php --package=public_html/trial/tmp/pkg_ra_calendar_download.zip")
         	  } // End of withCredentials
-            }
+            } // End of Script
           } // End of Steps
         } // End of Stage
-*/
       } // End of Parallel
     } // End of Stage
   } // End of Stages
