@@ -4,26 +4,37 @@ pipeline {
     stage('Extract Sources') {
       steps {
 	    // Use the master branch to get the sources. Ensure the media is attached into the pi.
-	    git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
+        dir('pkg_ra_calendar_download') {
+	      git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
+		}
       }
     }
     stage('Package Zip File') {
       steps {
+        // First tidy the directory
+        sh 'rm -r packages'
+        sh 'rm pkg_ra_calendar_download.xml'
+      
         // First Zip the components as part of the package
         sh 'rm -r .git'
-        sh 'zip -r packages/com_ra_calendar_download.zip packages/com_ra_calendar_download'
-        sh 'zip -r packages/mod_ra_calendar_download.zip packages/mod_ra_calendar_download'
+        dir('pkg_ra_calendar_download/packages') {
+          sh 'zip -r com_ra_calendar_download.zip com_ra_calendar_download'
+          sh 'zip -r mod_ra_calendar_download.zip mod_ra_calendar_download'
+		  // Remove unwanted directories
+		  sh 'rm -r com_ra_calendar_download'
+		  sh 'rm -r mod_ra_calendar_download'
+		}
 
-		// Remove unwanted directories
-		sh 'rm -r packages/com_ra_calendar_download'
-		sh 'rm -r packages/mod_ra_calendar_download'
-
-		// Now zip the main package
-        sh 'zip -r pkg_ra_calendar_download.zip .'
+		dir('pkg_ra_calendar_download') {
+		  // Now zip the main package
+          sh 'zip -r ../pkg_ra_calendar_download.zip .'
+        }
+        
         // Now remove the directory
         // sh 'rm -r pkg_ra_calendar_download'
       }
     }
+/*
     stage('Deployment') {
       parallel {
         stage('Apache01') {
@@ -53,7 +64,7 @@ pipeline {
             } // End of Script
           } // End of Steps
         } // End of Stage
-/*
+
         stage('Trial Site') {
           steps {
             script {
@@ -87,8 +98,8 @@ pipeline {
             }
           } // End of Steps
         } // End of Stage
-*/
       } // End of Parallel
     } // End of Stage
+*/
   } // End of Stages
 } // End of Pipeline
