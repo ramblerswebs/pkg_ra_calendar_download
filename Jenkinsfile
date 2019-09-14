@@ -16,6 +16,7 @@ pipeline {
       steps {
 	    // Use the master branch to get the sources. Ensure the media is attached into the pi.
         dir('pkg_ra_calendar_download') {
+          // Checkout to the right directory
 	      git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
 		}
       }
