@@ -23,8 +23,8 @@ pipeline {
     }
     stage('Update version information') {
       steps {
-        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/com_ra_calendar_download/com_ra_calendar_download.xml'
-        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/mod_ra_calendar_download/mod_ra_calendar_download.xml'
+        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/com_ra_calendar_download/com_ra_calendar_download.xml'
+        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/mod_ra_calendar_download/mod_ra_calendar_download.xml'
         sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml'
       }
     }
