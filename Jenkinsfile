@@ -21,6 +21,13 @@ pipeline {
 		}
       }
     }
+    stage('Update version information') {
+      steps {
+        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_calendar_download/com_ra_calendar_download/com_ra_calendar_download.xml'
+        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_calendar_download/mod_ra_calendar_download/mod_ra_calendar_download.xml'
+        sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_calendar_download/pkg_ra_calendar_download.xml'
+      }
+    }
     stage('Package Zip File') {
       steps {
         // First tidy the directory
@@ -33,8 +40,8 @@ pipeline {
           sh 'zip -r com_ra_calendar_download.zip com_ra_calendar_download'
           sh 'zip -r mod_ra_calendar_download.zip mod_ra_calendar_download'
 		  // Remove unwanted directories
-		  sh 'rm -r com_ra_calendar_download'
-		  sh 'rm -r mod_ra_calendar_download'
+		  //sh 'rm -r com_ra_calendar_download'
+		  //sh 'rm -r mod_ra_calendar_download'
 		}
 
 		dir('pkg_ra_calendar_download') {
