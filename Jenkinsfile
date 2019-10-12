@@ -49,10 +49,19 @@ pipeline {
 		  // Now zip the main package
           sh 'zip -r ../pkg_ra_calendar_download.zip .'
         }
-        
-        // Now remove the directory
-        // sh 'rm -r pkg_ra_calendar_download'
       }
+    }
+    stage('Archive Package') {
+    	steps {
+    	  script {
+    	      dir('tmp'){
+    	        sh 'rm -f *.zip'
+    	      }
+          }
+          sh 'python /usr/python/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml -z tmp'    	  
+
+          cifsPublisher(publishers: [[configName: 'Joomla', transfers: [[cleanRemote: false, excludes: '', flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: 'pkg_ra_calendar_download', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'tmp/*.zip']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
+    	}
     }
     stage('Deployment') {
       parallel {
