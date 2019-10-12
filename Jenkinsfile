@@ -81,14 +81,14 @@ pipeline {
                 remote.allowAnyHosts = true
 		        
                 // First set the permissions so that the file can be deployed
-                // sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache01 edit")
+                sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache01 edit")
                 // put the package into the remote tmp location
-                // sshPut (remote: remote, from: "pkg_ra_calendar_download.zip", into: "/home/pi/Documents/Docker/ramblers/volumes/apache01/tmp")
+                sshPut (remote: remote, from: "pkg_ra_calendar_download.zip", into: "/home/pi/Documents/Docker/ramblers/volumes/apache01/tmp")
                 // reset the permissions back
-                // sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache01 reset")
+                sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache01 reset")
 
                 // run the command to install the update.
-                // sshCommand(remote: remote, command: "docker exec apache01 php cli/install-joomla-extension.php --package=tmp/pkg_ra_calendar_download.zip")
+                sshCommand(remote: remote, command: "docker exec apache01 php cli/install-joomla-extension.php --package=tmp/pkg_ra_calendar_download.zip")
         	  } // End of withCredentials
             } // End of Script
           } // End of Steps
