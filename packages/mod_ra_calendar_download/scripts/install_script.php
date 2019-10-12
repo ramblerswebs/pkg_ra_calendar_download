@@ -20,7 +20,7 @@ class mod_ra_calendar_downloadInstallerScript
             // Get a db connection.
 			$feed = new ra_calendar_download_feed();
 			//$feed->truncate_table();
-			//$feed->update_records();
+			$feed->update_records();
 			unset($feed);
 			JFactory::getApplication()->enqueueMessage('Ramblers Group Codes have been updated.');
 	}
