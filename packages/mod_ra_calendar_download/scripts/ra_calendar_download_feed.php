@@ -31,7 +31,7 @@ class ra_calendar_download_feed
 
 	public function update_records()
 	{
-		$this->update_records_url("http://www.ramblers.org.uk/api/lbs/groups");
+		$this->update_records_url("https://groups.theramblers.org.uk");
 	}
 
 	public function update_records_url($url)
