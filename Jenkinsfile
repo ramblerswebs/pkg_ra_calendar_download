@@ -1,9 +1,9 @@
 pipeline {
   agent any
   parameters {
-        choice(name: ‘DEPLOY01_SITE’, choices: ['Yes','No'], description: 'Deploy to Apache01')
-        choice(name: ‘DEPLOY02_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache02’)
-        choice(name: ‘DEPLOY03_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache03’)
+        choice(name: ‘DEPLOY01_SITE’, choices: ['Yes','No'], description: '')
+        choice(name: ‘DEPLOY02_SITE’, choices: [‘No’,‘Yes’], description: ‘’)
+        choice(name: ‘DEPLOY03_SITE’, choices: [‘No’,‘Yes’], description: ‘’)
         choice(name: ‘DEPLOY_TRIAL_SITE’,choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
   }
   stages {
