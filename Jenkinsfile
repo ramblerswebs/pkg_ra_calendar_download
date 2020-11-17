@@ -3,8 +3,18 @@ pipeline {
   parameters {
         choice(
             choices: ['Yes' , 'No'],
-            description: 'Deploy Succcessful Build to Local Apache Site',
-            name: 'DEPLOY_APACHE_SITE')
+            description: 'Deploy Succcessful Build to Local Apache01 Site',
+            name: 'DEPLOY_APACHE01_SITE')
+
+        choice(
+            choices: [‘No’ , ‘Yes’],
+            description: ‘Deploy Succcessful Build to Local Apache02 Site’,
+            name: ‘DEPLOY_APACHE02_SITE’)
+
+        choice(
+            choices: [‘No’ , ‘Yes’],
+            description: ‘Deploy Succcessful Build to Local Apache03 Site’,
+            name: ‘DEPLOY_APACHE03_SITE’)
 
         choice(
             choices: ['No' , 'Yes'],
@@ -65,7 +75,7 @@ pipeline {
     }
     stage('Deployment - Apache01') {
       when { 
-      	expression { params.DEPLOY_APACHE_SITE == "Yes" }
+      	expression { params.DEPLOY_APACHE01_SITE == "Yes" }
       }
       steps {
         script {
@@ -89,6 +99,70 @@ pipeline {
 
             // run the command to install the update.
             sshCommand(remote: remote, command: "docker exec apache01 php cli/install-joomla-extension.php --package=tmp/pkg_ra_calendar_download.zip")
+    	  } // End of withCredentials
+        } // End of Script
+      } // End of Steps
+    } // End of Stage
+
+
+    stage(‘Deployment - Apache02’) {
+      when { 
+      	expression { params.DEPLOY_APACHE02_SITE == “Yes” }
+      }
+      steps {
+        script {
+          // Update to use SSH Private-Public Key file
+          withCredentials([sshUserPrivateKey(credentialsId: ‘SSH_Pi’, keyFileVariable: ‘KEY’, passphraseVariable: ‘PHRASE’, usernameVariable: ‘USER’)]) {
+            // Define the remote node
+            def remote = [:]
+        	remote.name = ‘PiMobile4’
+            remote.host = ‘172.16.1.1’
+            remote.user = “$USER”
+            remote.identityFile = “/home/jenkins/.ssh/pi”
+            remote.passphrase = “$PHRASE”
+            remote.allowAnyHosts = true
+	        
+            // First set the permissions so that the file can be deployed
+            sshCommand(remote: remote, command: “/home/pi/bin/apache_perm apache02 edit”)
+            // put the package into the remote tmp location
+            sshPut (remote: remote, from: “pkg_ra_calendar_download.zip”, into: “/home/pi/Documents/Docker/ramblers/volumes/apache02/tmp”)
+            // reset the permissions back
+            sshCommand(remote: remote, command: “/home/pi/bin/apache_perm apache02 reset”)
+
+            // run the command to install the update.
+            sshCommand(remote: remote, command: “docker exec apache02 php cli/install-joomla-extension.php —package=tmp/pkg_ra_calendar_download.zip”)
+    	  } // End of withCredentials
+        } // End of Script
+      } // End of Steps
+    } // End of Stage
+
+
+    stage(‘Deployment - Apache03’) {
+      when { 
+      	expression { params.DEPLOY_APACHE03_SITE == “Yes” }
+      }
+      steps {
+        script {
+          // Update to use SSH Private-Public Key file
+          withCredentials([sshUserPrivateKey(credentialsId: ‘SSH_Pi’, keyFileVariable: ‘KEY’, passphraseVariable: ‘PHRASE’, usernameVariable: ‘USER’)]) {
+            // Define the remote node
+            def remote = [:]
+        	remote.name = ‘PiMobile4’
+            remote.host = ‘172.16.1.1’
+            remote.user = “$USER”
+            remote.identityFile = “/home/jenkins/.ssh/pi”
+            remote.passphrase = “$PHRASE”
+            remote.allowAnyHosts = true
+	        
+            // First set the permissions so that the file can be deployed
+            sshCommand(remote: remote, command: “/home/pi/bin/apache_perm apache03 edit”)
+            // put the package into the remote tmp location
+            sshPut (remote: remote, from: “pkg_ra_calendar_download.zip”, into: “/home/pi/Documents/Docker/ramblers/volumes/apache03/tmp”)
+            // reset the permissions back
+            sshCommand(remote: remote, command: “/home/pi/bin/apache_perm apache03 reset”)
+
+            // run the command to install the update.
+            sshCommand(remote: remote, command: “docker exec apache03 php cli/install-joomla-extension.php —package=tmp/pkg_ra_calendar_download.zip”)
     	  } // End of withCredentials
         } // End of Script
       } // End of Steps
