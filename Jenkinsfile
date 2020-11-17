@@ -1,25 +1,10 @@
 pipeline {
   agent any
   parameters {
-        choice(
-            choices: ['Yes' , 'No'],
-            description: 'Deploy to Apache01',
-            name: 'DEPLOY_APACHE01_SITE')
-
-        choice(
-            choices: [‘No’ , ‘Yes’],
-            description: ‘Deploy to Apache02’,
-            name: ‘DEPLOY_APACHE02_SITE’)
-
-        choice(
-            choices: [‘No’ , ‘Yes’],
-            description: ‘Deploy to Apache03’,
-            name: ‘DEPLOY_APACHE03_SITE’)
-
-        choice(
-            choices: ['No' , 'Yes'],
-            description: 'Deploy Succcessful Build to Ramblers Trial Site',
-            name: 'DEPLOY_TRIAL_SITE')
+        choice(name: ‘DEPLOY_APACHE01_SITE’, choices: ['Yes','No'], description: 'Deploy to Apache01')
+        choice(name: ‘DEPLOY_APACHE02_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache02’)
+        choice(name: ‘DEPLOY_APACHE03_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache03’)
+        choice(name: ‘DEPLOY_TRIAL_SITE’,choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
   }
   stages {
     stage('Extract Sources') {
