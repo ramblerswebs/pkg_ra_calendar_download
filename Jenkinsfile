@@ -1,9 +1,9 @@
 pipeline {
   agent any
   parameters {
-        choice(name: ‘DEPLOY_APACHE01_SITE’, choices: ['Yes','No'], description: 'Deploy to Apache01')
-        choice(name: ‘DEPLOY_APACHE02_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache02’)
-        choice(name: ‘DEPLOY_APACHE03_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache03’)
+        choice(name: ‘DEPLOY01_SITE’, choices: ['Yes','No'], description: 'Deploy to Apache01')
+        choice(name: ‘DEPLOY02_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache02’)
+        choice(name: ‘DEPLOY03_SITE’, choices: [‘No’,‘Yes’], description: ‘Deploy to Apache03’)
         choice(name: ‘DEPLOY_TRIAL_SITE’,choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
   }
   stages {
@@ -60,7 +60,7 @@ pipeline {
     }
     stage('Deployment - Apache01') {
       when { 
-      	expression { params.DEPLOY_APACHE01_SITE == "Yes" }
+      	expression { params.DEPLOY01_SITE == "Yes" }
       }
       steps {
         script {
@@ -91,7 +91,7 @@ pipeline {
 
     stage(‘Deployment - Apache02’) {
       when { 
-      	expression { params.DEPLOY_APACHE02_SITE == “Yes” }
+      	expression { params.DEPLOY02_SITE == “Yes” }
       }
       steps {
         script {
@@ -122,7 +122,7 @@ pipeline {
 
     stage(‘Deployment - Apache03’) {
       when { 
-      	expression { params.DEPLOY_APACHE03_SITE == “Yes” }
+      	expression { params.DEPLOY03_SITE == “Yes” }
       }
       steps {
         script {
