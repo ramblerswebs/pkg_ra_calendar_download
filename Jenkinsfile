@@ -2,8 +2,8 @@ pipeline {
   agent any
   parameters {
         choice(name: 'DEPLOY_APACHE01', choices: ['Yes' , 'No'], description: 'Deploy to Apache01')
-        choice(name: 'DEPLOY_APACHE02', choices: ['Yes' , 'No'], description: 'Deploy to Apache02')
-        choice(name: 'DEPLOY_APACHE03', choices: ['Yes' , 'No'], description: 'Deploy to Apache03')
+        choice(name: 'DEPLOY_APACHE02', choices: ['No' , 'Yes'], description: 'Deploy to Apache02')
+        choice(name: 'DEPLOY_APACHE03', choices: ['No' , 'Yes'], description: 'Deploy to Apache03')
         choice(name: 'DEPLOY_TRIAL_SITE', choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
   }
   stages {
@@ -59,7 +59,7 @@ pipeline {
     }
     stage('Deployment - Apache01') {
       when { 
-      	expression { params.DEPLOY_APACHE_SITE == "Yes" }
+      	expression { params.DEPLOY_APACHE01 == "Yes" }
       }
       steps {
         script {
@@ -87,6 +87,38 @@ pipeline {
         } // End of Script
       } // End of Steps
     } // End of Stage
+
+    stage('Deployment - Apache02') {
+      when { 
+      	expression { params.DEPLOY_APACHE02 == "Yes" }
+      }
+      steps {
+        script {
+          // Update to use SSH Private-Public Key file
+          withCredentials([sshUserPrivateKey(credentialsId: 'SSH_Pi', keyFileVariable: 'KEY', passphraseVariable: 'PHRASE', usernameVariable: 'USER')]) {
+            // Define the remote node
+            def remote = [:]
+        	remote.name = 'PiMobile4'
+            remote.host = '172.16.1.1'
+            remote.user = "$USER"
+            remote.identityFile = "/home/jenkins/.ssh/pi"
+            remote.passphrase = "$PHRASE"
+            remote.allowAnyHosts = true
+	        
+            // First set the permissions so that the file can be deployed
+            sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache02 edit")
+            // put the package into the remote tmp location
+            sshPut (remote: remote, from: "pkg_ra_calendar_download.zip", into: "/home/pi/Documents/Docker/ramblers/volumes/apache02/tmp")
+            // reset the permissions back
+            sshCommand(remote: remote, command: "/home/pi/bin/apache_perm apache02 reset")
+
+            // run the command to install the update.
+            sshCommand(remote: remote, command: "docker exec apache02 php cli/install-joomla-extension.php --package=tmp/pkg_ra_calendar_download.zip")
+    	  } // End of withCredentials
+        } // End of Script
+      } // End of Steps
+    } // End of Stage
+
 
     stage('Deployment - Trial Site') {
       when { 
