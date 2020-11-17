@@ -3,17 +3,17 @@ pipeline {
   parameters {
         choice(
             choices: ['Yes' , 'No'],
-            description: 'Deploy Build to Local Apache01 Site',
+            description: 'Deploy to Apache01',
             name: 'DEPLOY_APACHE01_SITE')
 
         choice(
             choices: [‘No’ , ‘Yes’],
-            description: ‘Deploy Build to Local Apache02 Site’,
+            description: ‘Deploy to Apache02’,
             name: ‘DEPLOY_APACHE02_SITE’)
 
         choice(
             choices: [‘No’ , ‘Yes’],
-            description: ‘Deploy Build to Local Apache03 Site’,
+            description: ‘Deploy to Apache03’,
             name: ‘DEPLOY_APACHE03_SITE’)
 
         choice(
