@@ -18,7 +18,7 @@ class modRaCalendarDownloadHelper
         // Ensure we have a custom Error Handler.
         set_error_handler("customError");
 
-        $input = JFactory::getApplication()->input;
+        $input = JFactory::getApplication()->getInput();
         $data  = $input->get('data');
 
         // Define the data. Received in the format <group>.<startdate>.<enddate>

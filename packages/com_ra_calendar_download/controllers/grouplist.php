@@ -8,6 +8,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\Utilities\ArrayHelper;
+
 jimport('joomla.application.component.controlleradmin');
 
 class ra_calendar_downloadControllerGroupList extends JControllerAdmin
@@ -27,7 +29,7 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 		$pks = $input->post->get('cid', array(), 'array');
 
 		// Sanitize the input
-		JArrayHelper::toInteger($pks);
+		ArrayHelper::toInteger($pks);
 
 		// Get the model
 		$model = $this->getModel();
@@ -48,7 +50,7 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 		$pks = $input->post->get('cid', array(), 'array');
 
 		// Sanitize the input
-		JArrayHelper::toInteger($pks);
+		ArrayHelper::toInteger($pks);
 
 		// Get the model
 		$model = $this->getModel();
@@ -66,7 +68,7 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 
 		// Get the input
 		$input = JFactory::getApplication()->input;
-		$pks = $input->post->get('cid', array(), 'array');
+		pks = $input->post->get('cid', array(), 'array');
 
 		// Sanitize the input
 		JArrayHelper::toInteger($pks);
