@@ -68,7 +68,7 @@ class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 
 		// Get the input
 		$input = JFactory::getApplication()->input;
-		pks = $input->post->get('cid', array(), 'array');
+		$pks = $input->post->get('cid', array(), 'array');
 
 		// Sanitize the input
 		JArrayHelper::toInteger($pks);
