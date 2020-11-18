@@ -33,6 +33,9 @@
 	</update>
 	<administration>
 		<menu>com_ra_calendar_download</menu>
+		<submenu>
+		    <menu view="grouplist">COM_RA_CALENDAR_DOWNLOAD_SUBMENU_GROUPS</menu>
+		</submenu>
 		<files folder="admin">
 			<filename component="com_ra_calendar_download">ra_calendar_download.php</filename>
 			<filename>index.html</filename>
