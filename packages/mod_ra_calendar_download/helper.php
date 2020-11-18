@@ -18,8 +18,16 @@ class modRaCalendarDownloadHelper
         // Ensure we have a custom Error Handler.
         set_error_handler("customError");
 
+		$version = new JVersion();
         // $input = JFactory::getApplication()->getInput();
-        $input = JFactory::getApplication()->input;
+        if (version_compare($version->getShortVersion(), '4.0', '<'))
+        {
+        	$input = JFactory::getApplication()->input;        	
+        }
+        else
+        {
+        	$input = JFactory::getApplication()->getInput();
+        }
         $data  = $input->get('data');
 
         // Define the data. Received in the format <group>.<startdate>.<enddate>
@@ -33,7 +41,6 @@ class modRaCalendarDownloadHelper
         $distanceLow = $items[5];
         $distanceHigh = $items[6];
         $rsstimeout = intval($items[7]);
-
         if ($dayMask == 0) { return 'Please select the days you wish to walk';}
         if ($gradeMask == 0) { return 'Please select the grade of your walks' ;}
 
