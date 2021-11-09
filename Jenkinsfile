@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-        choice(name: 'DEPLOY_APACHE01', choices: ['Yes' , 'No'], description: 'Deploy to Apache01')
+        choice(name: 'DEPLOY_APACHE01', choices: ['No' , 'Yes'], description: 'Deploy to Apache01')
         choice(name: 'DEPLOY_APACHE02', choices: ['No' , 'Yes'], description: 'Deploy to Apache02')
         choice(name: 'DEPLOY_APACHE03', choices: ['No' , 'Yes'], description: 'Deploy to Apache03')
         choice(name: 'DEPLOY_TRIAL_SITE', choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
@@ -12,7 +12,7 @@ pipeline {
 	    // Use the master branch to get the sources. Ensure the media is attached into the pi.
         dir('pkg_ra_calendar_download') {
           // Checkout to the right directory
-	      git(url: '/media/pi/USBPI/GitLibrary/pkg_ra_calendar_download', branch: 'master')
+	      git(url: 'https://github.com/ramblerswebs/pkg_ra_calendar_download', branch: 'master')
 		}
       }
     }
