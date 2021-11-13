@@ -46,21 +46,15 @@ pipeline {
         }
       }
     }
-    stage('Store ZIP to Repository') {
-      steps {
-        script {
-          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml -z ' &&  params.BINARY_STORE    	  
-        }
-      }
-    }
-    stage('Archive Package') {
+    stage('Repository Store') {
     	steps {
     	  script {
     	      dir('tmp'){
     	        sh 'rm -f *.zip'
     	      }
           }
-          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml -z tmp'    	  
+          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml -z tmp' 
+          Files.copy('tmp/*.zip', params.BINARY_STORE)   	  
 
           //cifsPublisher(publishers: [[configName: 'Joomla', transfers: [[cleanRemote: false, excludes: '', flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '', remoteDirectory: 'pkg_ra_calendar_download', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'tmp/*.zip']], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true]])
     	}
