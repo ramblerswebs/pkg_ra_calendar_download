@@ -5,6 +5,7 @@ pipeline {
         choice(name: 'DEPLOY_APACHE02', choices: ['No' , 'Yes'], description: 'Deploy to Apache02')
         choice(name: 'DEPLOY_APACHE03', choices: ['No' , 'Yes'], description: 'Deploy to Apache03')
         choice(name: 'DEPLOY_TRIAL_SITE', choices: ['No' , 'Yes'], description: 'Deploy Succcessful Build to Ramblers Trial Site')
+        string(name: 'BINARY_STORE', defaultValue: '/home/binaries', trim: true)
   }
   stages {
     stage('Extract Sources') {
