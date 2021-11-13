@@ -46,6 +46,13 @@ pipeline {
         }
       }
     }
+    stage('Store ZIP to Repository') {
+      steps {
+        script {
+          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml -z' &&  params.BINARY_STORE    	  
+        }
+      }
+    }
     stage('Archive Package') {
     	steps {
     	  script {
