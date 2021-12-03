@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-        string(name: 'BINARY_STORE', defaultValue: '/home/binaries', trim: true)
+        string(name: 'BINARY_STORE', defaultValue: '/Binaries', trim: true)
   }
   stages {
     stage('Extract Sources') {
