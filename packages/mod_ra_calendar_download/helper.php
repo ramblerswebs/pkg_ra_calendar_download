@@ -56,20 +56,12 @@ class modRaCalendarDownloadHelper
         //ini_set('max_execution_time', $rsstimeout);
         ini_set('default_socket_timeout', $rsstimeout);
         // First get the data from the Ramblers Site
-        $url = "http://www.ramblers.org.uk/api/lbs/walks?groups=" . $group ;
 
-         // Get the JSON information
-         $walkdata = file_get_contents($url);
-
-         // echo $walkdata ;
-         if ($walkdata != "")
-         {
-            $contents = json_decode($walkdata);
-            unset($walkdata);
-
-            $walks = new RJsonwalksWalks($contents);
-            unset($contents);
-
+        $options = new RJsonwalksFeedoptions($group);
+        $feed = new RJsonwalksFeed($options);
+        $walks = $feed->getWalks();
+        if ($walks->totalWalks()>0)
+        {
             // Filter the walks to our specific dates
             $walks->filterDateRange($s_date, $e_date);
 

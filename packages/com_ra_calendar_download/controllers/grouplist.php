@@ -14,7 +14,7 @@ jimport('joomla.application.component.controlleradmin');
 
 class ra_calendar_downloadControllerGroupList extends JControllerAdmin
 {
-	public function getModel($name = 'grouplist', $prefix = 'ra_calendar_downloadmodel')
+	public function getModel($name = 'grouplist', $prefix = 'ra_calendar_downloadmodel', $config = array())
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
