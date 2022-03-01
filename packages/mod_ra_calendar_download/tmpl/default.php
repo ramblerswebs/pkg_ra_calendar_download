@@ -32,7 +32,7 @@ $rsstimeout = $params->get('rsstimeout');
 
 ?>
 <div class="ra_calendar_download">
-    <div id="<?php echo($ID)?>_leadingmessage" class="leadingtext textdescription"> <?php echo($leadingText); ?> </div>
+    <div id="<?php echo($ID)?>_leadingmessage" class="leadingtext textdescription"> <p><?php echo($leadingText); ?></p> </div>
     <form id='<?php echo($ID)?>_submitform'>
         <span class="item">
             <div class="groupselection">
@@ -51,10 +51,10 @@ $rsstimeout = $params->get('rsstimeout');
             <input type="submit" id="<?php echo($ID) ?>_submit" class="button" value="<?php echo($buttonText) ?>" />
             <a href="#" id="<?php echo($ID) ?>_more_options" style="text-align: right">More Options...</a>
             <span id="<?php echo($ID) ?>_download_details" style="display:none">
-                <br/><br/>
-                <label for="from_datepicker">Date Duration</label>
-                <input type="text" id="<?php echo($ID) ?>_from_datepicker" name="<?php echo($ID) ?>_fromdate" value="07/03/2016">
-                <input type="text" id="<?php echo($ID) ?>_to_datepicker" name="<?php echo($ID) ?>_todate" value="21/03/2016">
+                <p>
+                <label for="from_datepicker">Date Duration</label><br/>
+                <input type="text" id="<?php echo($ID) ?>_from_datepicker" name="<?php echo($ID) ?>_fromdate" value="07/03/2016"><br/>
+                <input type="text" id="<?php echo($ID) ?>_to_datepicker" name="<?php echo($ID) ?>_todate" value="21/03/2016"><br/>
                 <label>Walking Days & Grades</label>
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr border="0">
@@ -82,13 +82,14 @@ $rsstimeout = $params->get('rsstimeout');
                   <input type="text" id="<?php echo($ID) ?>_distance" readonly style="border:0">
                 </div>
                 <div id="<?php echo($ID) ?>_slider-range"></div>
+                </p>
             </span>
             <span id="<?php echo($ID) ?>_hidden_details" style="display:none">
                 <input type="text" id="<?php echo($ID) ?>_rsstimeout" value="<?php echo($rsstimeout)?>">
             </span>
         </span>
     </form>
-    <div id='<?php echo($ID)?>_trailingmessage' class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
+    <div id='<?php echo($ID)?>_trailingmessage' class="trailingtext textdescription"><p><?php echo($trailingText); ?></p> </div>
     <div>
         <a href="https://github.com/ramblerswebs/pkg_ra_calendar_download/wiki/User-Guide" target="blank">Click Here for User Guide</a>
     </div>

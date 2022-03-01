@@ -15,4 +15,8 @@ class ra_calendar_downloadTableGroup extends JTable
 	{
 		parent::__construct('#__ra_groups', 'id', $db);
 	}
+	public function bind($src, $ignore = array())
+	{
+		return parent::bind($src, array('description'));
+	}
 }
