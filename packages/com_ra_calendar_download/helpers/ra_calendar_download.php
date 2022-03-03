@@ -11,6 +11,10 @@ class ra_calendar_downloadHelper
 {
 	public static function addSubmenu($vName)
 	{
+        if (!version_compare(JVERSION, '4.0', '<' )) {
+            return;
+        }
+		
 		JHtmlSidebar::addEntry(
 			JText::_('COM_RA_CALENDAR_DOWNLOAD_SUBMENU_GROUPS'),
 			'index.php?option=com_ra_calendar_download&view=grouplist',
