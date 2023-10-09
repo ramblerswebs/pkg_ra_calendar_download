@@ -16,7 +16,7 @@ class modRaCalendarDownloadHelper
     public static function getAjax()
     {
         // Ensure we have a custom Error Handler.
-        set_error_handler("customError");
+        set_error_handler("customError", E_ALL & ~E_DEPRECATED & ~E_WARNING);
 
 		$version = new JVersion();
         // $input = JFactory::getApplication()->getInput();
