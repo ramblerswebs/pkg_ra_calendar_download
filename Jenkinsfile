@@ -2,6 +2,7 @@ pipeline {
   agent any
   parameters {
         string(name: 'BINARY_STORE', defaultValue: '/Binaries', trim: true)
+        booleanParam(name: 'UPD_VERSION', defaultValue: true, description: 'Update version fields')
   }
   stages {
     stage('Extract Sources') {
@@ -15,9 +16,12 @@ pipeline {
     }
     stage('Update version information') {
       steps {
-        sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/com_ra_calendar_download/com_ra_calendar_download.xml'
-        sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/mod_ra_calendar_download/mod_ra_calendar_download.xml'
-        sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml'
+        if (params.UPD_VERSION == true)
+        {
+          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/com_ra_calendar_download/com_ra_calendar_download.xml'
+          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/mod_ra_calendar_download/mod_ra_calendar_download.xml'
+          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml'
+        }
       }
     }
     stage('Package Zip File') {
