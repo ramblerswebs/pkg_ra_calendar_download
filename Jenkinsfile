@@ -16,11 +16,13 @@ pipeline {
     }
     stage('Update version information') {
       steps {
-        if (params.UPD_VERSION == true)
-        {
-          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/com_ra_calendar_download/com_ra_calendar_download.xml'
-          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/mod_ra_calendar_download/mod_ra_calendar_download.xml'
-          sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml'
+        script{
+          if (params.UPD_VERSION == true)
+          {
+            sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/com_ra_calendar_download/com_ra_calendar_download.xml'
+            sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/packages/mod_ra_calendar_download/mod_ra_calendar_download.xml'
+            sh 'python2 /home/UpdateJoomlaBuild -bx -i pkg_ra_calendar_download/pkg_ra_calendar_download.xml'
+          }        
         }
       }
     }
