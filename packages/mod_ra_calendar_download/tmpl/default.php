@@ -15,8 +15,8 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('jquery.framework');
 $document = JFactory::getDocument();
 $document->addScript('https://code.jquery.com/ui/1.10.3/jquery-ui.js');
-$document->addStyleSheet('https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', 'text/css');
-$document->addStyleSheet(JURI::base() . 'modules/mod_ra_calendar_download/scripts/css/ra_calendar_download.css', 'text/css');
+$document->addStyleSheet('https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', array("options" => "text/css"));
+$document->addStyleSheet(JURI::base() . 'modules/mod_ra_calendar_download/scripts/css/ra_calendar_download.css', array("options" => "text/css"));
 
 // Add the script to enable datepicker
 //$document->addScript(JURI::base() . 'modules/mod_ra_calendar_download/scripts/js/ra_calendar_download.js', "text/javascript");
