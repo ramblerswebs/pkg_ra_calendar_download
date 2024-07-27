@@ -21,6 +21,10 @@ pipeline {
 		      sh 'rm -r mod_ra_calendar_download'
 		    } 
 
+        // Remove the Jenkins File
+        sh 'rm -f Jenkinsfile'
+        // Remove the temp location
+        sh 'rm -rf package@tmp'
         // Now zip the main package
         sh 'zip -r pkg_ra_calendar_download.zip .'
       }
